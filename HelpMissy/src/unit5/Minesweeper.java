@@ -1,8 +1,6 @@
 package unit5;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Minesweeper {
 
@@ -10,10 +8,10 @@ public class Minesweeper {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Enter a variable for m, n, and p to make minesweeper: ");
-        int m = in.nextInt();
-        int n = in.nextInt();
-        int p = in.nextInt();
-        boolean[][] theField= doMinesweeper(m,n,p);
+        int rows = in.nextInt();
+        int cols = in.nextInt();
+        int prob = in.nextInt();
+        boolean[][] theField= doMinesweeper(rows, cols, prob);
         printField(theField);
         printNumberedField(theField);
     }
@@ -23,7 +21,7 @@ public class Minesweeper {
         Random rand = new Random();
         boolean[][] board = new boolean[m][n];
         int chance = 0;
-        for (int i = 0; i < board.length; i++) {
+        for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[0].length; j++) {
 
                 chance = rand.nextInt(0,p);
@@ -41,7 +39,7 @@ public class Minesweeper {
 
     public static void printField(boolean[][] board) {
 
-        for (int i = 0; i < board.length; i++) {
+        for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[0].length; j++) {
                 if(board[i][j]) {
                     System.out.print("*  ");
